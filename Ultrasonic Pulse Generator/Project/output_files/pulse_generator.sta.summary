@@ -1,0 +1,365 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -4.550
+TNS   : -24.256
+
+Type  : Slow 1200mV 85C Model Setup 'InB_signal'
+Slack : -1.498
+TNS   : -8.598
+
+Type  : Slow 1200mV 85C Model Setup 'InD_signal'
+Slack : -1.470
+TNS   : -8.422
+
+Type  : Slow 1200mV 85C Model Setup 'InC_signal'
+Slack : -1.458
+TNS   : -8.331
+
+Type  : Slow 1200mV 85C Model Setup 'InA_signal'
+Slack : -1.440
+TNS   : -8.228
+
+Type  : Slow 1200mV 85C Model Setup 'prf'
+Slack : 0.150
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'InA_signal'
+Slack : 0.467
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'InC_signal'
+Slack : 0.467
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'InD_signal'
+Slack : 0.467
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'InB_signal'
+Slack : 0.468
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'prf'
+Slack : 0.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'prf'
+Slack : -1.896
+TNS   : -1.896
+
+Type  : Slow 1200mV 85C Model Recovery 'InD_signal'
+Slack : -1.809
+TNS   : -14.472
+
+Type  : Slow 1200mV 85C Model Recovery 'InA_signal'
+Slack : -1.513
+TNS   : -12.104
+
+Type  : Slow 1200mV 85C Model Recovery 'InC_signal'
+Slack : -1.453
+TNS   : -11.624
+
+Type  : Slow 1200mV 85C Model Recovery 'InB_signal'
+Slack : -1.370
+TNS   : -10.960
+
+Type  : Slow 1200mV 85C Model Recovery 'clk'
+Slack : -1.113
+TNS   : -4.483
+
+Type  : Slow 1200mV 85C Model Removal 'clk'
+Slack : 0.494
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'InB_signal'
+Slack : 1.669
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'InC_signal'
+Slack : 1.769
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'InA_signal'
+Slack : 1.813
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'InD_signal'
+Slack : 2.098
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'prf'
+Slack : 2.245
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -16.383
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'prf'
+Slack : -3.000
+TNS   : -4.487
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'InA_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'InB_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'InC_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'InD_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -4.250
+TNS   : -21.837
+
+Type  : Slow 1200mV 0C Model Setup 'InB_signal'
+Slack : -1.291
+TNS   : -7.305
+
+Type  : Slow 1200mV 0C Model Setup 'InD_signal'
+Slack : -1.260
+TNS   : -7.095
+
+Type  : Slow 1200mV 0C Model Setup 'InC_signal'
+Slack : -1.246
+TNS   : -6.997
+
+Type  : Slow 1200mV 0C Model Setup 'InA_signal'
+Slack : -1.229
+TNS   : -6.884
+
+Type  : Slow 1200mV 0C Model Setup 'prf'
+Slack : 0.233
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'InA_signal'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'InB_signal'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'InD_signal'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'InC_signal'
+Slack : 0.419
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.430
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'prf'
+Slack : 0.430
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'InD_signal'
+Slack : -1.745
+TNS   : -13.960
+
+Type  : Slow 1200mV 0C Model Recovery 'prf'
+Slack : -1.649
+TNS   : -1.649
+
+Type  : Slow 1200mV 0C Model Recovery 'InA_signal'
+Slack : -1.462
+TNS   : -11.696
+
+Type  : Slow 1200mV 0C Model Recovery 'InC_signal'
+Slack : -1.405
+TNS   : -11.240
+
+Type  : Slow 1200mV 0C Model Recovery 'InB_signal'
+Slack : -1.333
+TNS   : -10.664
+
+Type  : Slow 1200mV 0C Model Recovery 'clk'
+Slack : -0.931
+TNS   : -3.655
+
+Type  : Slow 1200mV 0C Model Removal 'clk'
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'InB_signal'
+Slack : 1.584
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'InA_signal'
+Slack : 1.719
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'InC_signal'
+Slack : 1.743
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'InD_signal'
+Slack : 1.994
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'prf'
+Slack : 2.074
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -16.383
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'prf'
+Slack : -3.000
+TNS   : -4.487
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'InB_signal'
+Slack : -1.487
+TNS   : -12.016
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'InA_signal'
+Slack : -1.487
+TNS   : -11.928
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'InC_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'InD_signal'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.100
+TNS   : -7.526
+
+Type  : Fast 1200mV 0C Model Setup 'InB_signal'
+Slack : -0.070
+TNS   : -0.105
+
+Type  : Fast 1200mV 0C Model Setup 'InD_signal'
+Slack : -0.067
+TNS   : -0.099
+
+Type  : Fast 1200mV 0C Model Setup 'InC_signal'
+Slack : -0.056
+TNS   : -0.079
+
+Type  : Fast 1200mV 0C Model Setup 'InA_signal'
+Slack : -0.052
+TNS   : -0.068
+
+Type  : Fast 1200mV 0C Model Setup 'prf'
+Slack : 0.635
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'InA_signal'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'InB_signal'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'InC_signal'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'InD_signal'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'prf'
+Slack : 0.201
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'prf'
+Slack : -0.349
+TNS   : -0.349
+
+Type  : Fast 1200mV 0C Model Recovery 'InD_signal'
+Slack : -0.236
+TNS   : -1.888
+
+Type  : Fast 1200mV 0C Model Recovery 'InA_signal'
+Slack : -0.120
+TNS   : -0.960
+
+Type  : Fast 1200mV 0C Model Recovery 'InB_signal'
+Slack : -0.068
+TNS   : -0.544
+
+Type  : Fast 1200mV 0C Model Recovery 'InC_signal'
+Slack : -0.057
+TNS   : -0.456
+
+Type  : Fast 1200mV 0C Model Recovery 'clk'
+Slack : 0.072
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'clk'
+Slack : 0.111
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'InC_signal'
+Slack : 0.662
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'InB_signal'
+Slack : 0.665
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'InA_signal'
+Slack : 0.724
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'InD_signal'
+Slack : 0.849
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'prf'
+Slack : 1.004
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -14.574
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'prf'
+Slack : -3.000
+TNS   : -4.117
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'InA_signal'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'InB_signal'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'InC_signal'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'InD_signal'
+Slack : -1.000
+TNS   : -8.000
+
+------------------------------------------------------------

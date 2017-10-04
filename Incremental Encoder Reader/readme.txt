@@ -1,0 +1,5 @@
+- The component was designed with Quartus II, version 13.1.
+-
+- This version must be installed before you can open the project with the configuration settings.
+-
+- Or you can create a new project and add the incremental_encoder_reader.vhd file to the project.

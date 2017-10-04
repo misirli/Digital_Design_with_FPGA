@@ -1,0 +1,341 @@
+----------------------------------------------------------------------------------
+-- Company        : 
+-- Engineer       :    Mustafa Mısırlı
+-- 
+-- Create Date    :    15:10:43 12/10/2016 
+-- Design Name    : 
+-- Module Name    :    pulse_generator 
+-- Project Name   : 
+-- Target Devices :    Cyclone III
+-- Tool versions  : 
+-- Description    : 
+--
+-- Dependencies   : 
+--
+-- Revision       :    1.0
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;--
+
+entity Driver is
+	 GENERIC( max_np_number : INTEGER := 255);              -- maximum number of pulse 
+    Port ( Clk    : in  STD_LOGIC;                         -- system clock
+           PRF    : in  STD_LOGIC;                         -- pulse repetition frequency
+           Wav    : in  STD_LOGIC_VECTOR (1 downto 0);     -- waveform selection
+			  Phase  : in  STD_LOGIC;                         -- phase selection
+           GRND   : in  STD_LOGIC;                         -- if grnd=1, there is ground between two different polarities then there isn't ground
+			  Enable : in  std_logic;                         -- activate output signals
+           NP     : in  integer range 0 to max_np_number;  -- number of pulse
+			  Reset  : in  std_logic;                         -- asenkron reset
+			  Busy   : out std_logic;                         -- busy is high while generating output signals 
+           InAout : out STD_LOGIC;                         -- it is control signal for switching positive polarity
+           InBout : out STD_LOGIC;                         -- it is control signal for switching negative polarity
+           InCout : out STD_LOGIC;                         -- it is control signal for switching ground polarity
+           InDout : out STD_LOGIC);                        -- it is control signal for switching ground polarity
+end Driver;
+
+architecture Behavioral of Driver is
+	signal WavSel : std_logic_vector(2 downto 0);
+	signal OutSel : std_logic_vector(1 downto 0);
+	
+	signal Data   : std_logic_vector(3 downto 0);
+
+	signal InA_done : std_logic;
+	signal InB_done : std_logic;
+	signal InC_done : std_logic;
+	signal InD_done : std_logic;
+	
+	signal counter_chA : integer range 0 to 255;
+	signal counter_chB : integer range 0 to 255;
+	signal counter_chC : integer range 0 to 255;
+	signal counter_chD : integer range 0 to 255;
+	
+	signal InA_Signal : STD_LOGIC;
+   signal InB_Signal : STD_LOGIC;
+   signal InC_Signal : STD_LOGIC;
+   signal InD_Signal : STD_LOGIC;
+	
+	signal Flag               : std_logic;
+	signal InA_Completed      : std_logic;
+	signal InA_InB_Completed  : std_logic; 
+	signal All_Wave_Completed : std_logic;
+	
+	signal Clr_0 : std_logic;
+	signal Clr_1 : std_logic;
+	
+	TYPE state_type IS (state0, state1, state2, state3);
+   SIGNAL state : state_type;
+	
+begin
+	WavSel <= GRND & Wav;       	
+	Clr_1  <= Clr_0 or Reset;	
+	OutSel <= Enable & Phase;
+	Busy   <= Flag;
+		
+	All_Wave_Completed <= InA_done and InB_done and InC_done and InD_done;
+	InA_InB_Completed  <= InA_done and InB_done;
+	InA_Completed      <= InA_done;
+	
+	-------------------------------------------------------------------------
+	------------------------------- Reset Biti ------------------------------
+	-- Tüm Dalgalar Tamamlandığında Counterlar Resetleniyor.
+	-------------------------------------------------------------------------
+	process(Flag, State, Clk)
+	begin
+		if(Flag='0')then
+			Clr_0 <= '0';
+		elsif(Clk'event and Clk='1')then
+			if(All_Wave_Completed='1' and State=State0)then
+				Clr_0 <= '1';
+			end if;			
+		end if;
+	end process;
+	
+	--------------------------------------------------------------------------------
+	-------------------------------- Flag Biti -------------------------------------
+	-- Asenkron Resetli
+	-- PRF Yükselen Kenar Tetiklemeli
+	--
+	-- Flag Biti 1 Olduğunda ilk Clk Yükselen Kenarında Pulse Üretilmeye Başlanıyor
+	--
+	-- Enable=1 ise Pulse Üretilmez
+	--------------------------------------------------------------------------------
+	process(PRF, Clr_1)
+	begin
+		if(Clr_1 = '1')then
+			Flag <= '0';
+		elsif(PRF'event and PRF = '1')then  
+			if(Enable = '0')then
+				Flag <= '1';
+			end if;
+		end if;
+	end process;
+	
+	------------------------------------------------------------------------
+	------------------------------ State Machine ---------------------------
+	-- Asenkron Resetli
+	-- Clk Düşen Kenar Tetiklemeli
+	--
+	-- State Machine Giriş Sinyallerini ve Feedback Sinyallerini
+	-- Alarak Yeni Durumu Hesaplar.
+	--
+	-- Wav(1:0) ve GRND Griş Sinyalleri Pulse Üretimi Sırasında
+	-- Değiştirilmemelidir.
+   -----------------------------------------------------------------------
+	process (Clk,Reset) 
+	begin
+		if(Reset = '1')then
+			state <= state0;
+		elsif(Clk'event and Clk='0') then
+			CASE state IS		
+			WHEN state0 =>                
+				IF (Flag = '1') THEN  
+					state <= state1;
+				ELSE
+					state <= state0;
+				end if;
+			
+			WHEN state1 =>
+				IF (((WavSel="000" or WavSel="001" or WavSel="010" or WavSel="011") and InA_Completed ='0') or ((WavSel="000" or WavSel="010") and InA_Completed='1')) THEN
+					state <= state2;
+				ELSIF(((WavSel="100" or WavSel="101" or WavSel="110")) or (WavSel="111" and InA_Completed='0') or (WavSel="001" and InA_Completed='1')) THEN
+					state <= state3;
+				ELSIF((WavSel="011" or WavSel="111") and InA_Completed='1')THEN
+					state <= state0;
+				ELSE
+					state <= state0;
+				END IF;
+			
+			WHEN state2 =>
+				IF (InA_Completed='0'and (WavSel="000" or WavSel="001" or WavSel="010" or WavSel="011")) THEN
+					state <= state1;
+				ELSIF(((WavSel="000" or WavSel="100") and InA_InB_Completed='1') or ((WavSel="100" or WavSel="101" or WavSel="110" or WavSel="111") and InA_InB_Completed='0')) THEN
+					state <= state3;
+				ELSIF((WavSel="010" or WavSel="110") and InA_InB_Completed='1') THEN
+					state <= state0;
+				ELSE
+					state <= state0;
+				END IF;
+				
+			WHEN state3 =>
+				IF ((WavSel="100" or WavSel="101" or WavSel="110" or WavSel="111") and All_Wave_Completed='0' and (counter_chA/=counter_chB)) THEN
+					state <= state2;
+				ELSIF ((WavSel="100" or WavSel="101" or WavSel="110" or WavSel="111") and All_Wave_Completed='0' and (counter_chA=counter_chB)) THEN
+					state <= state1;
+				ELSIF (All_Wave_Completed='1') THEN
+					state <= state0;
+				ELSE
+					state <= state0;
+				END IF;
+				
+			END CASE;
+		end if;
+	end process;
+	
+	process (State)
+	begin	
+		case State is
+			when state0 =>
+				data <= "0000";
+			when state1 =>
+				data <= "0001";
+			when state2 =>
+				data <= "0010";
+			when state3 =>
+				data <= "1100";
+		end case;
+	end process;
+	
+	--------------------------------------------------------------------------------------------
+	------------------------------------- Çıkış Katı DFF ---------------------------------------
+	-- Asenkron resetli
+	-- Clk yükselen kenar tetiklemeli
+	--------------------------------------------------------------------------------------------
+	process(Clk, Clr_1)                               -- Data çıkarıldı
+	begin
+		if(Clr_1 = '1')then
+			InA_Signal <= '0';
+			InB_Signal <= '0';
+			InC_Signal <= '0';
+			InD_Signal <= '0';
+		elsif(Clk'event and Clk = '1')then
+			InA_Signal <= Data(0);
+			InB_Signal <= Data(1);
+			InC_Signal <= Data(2);
+			InD_Signal <= Data(3);
+		end if;
+	end process;
+	
+	------------------------------------------------------
+	------------------- Output Select --------------------
+	-- Outsel <= Enable & Phase
+	--
+	-- outsel=00     => phase farkı yok
+	-- outsel=01     => phase farkı var
+	-- outsel=1-     => çıkış yok
+	-- outsel=others => çıkış yok
+	-----------------------------------
+	process (OutSel, InA_Signal, InB_Signal, InC_Signal, InD_Signal)
+    begin
+      case Outsel is 
+         when "00" =>   InAout <= InA_Signal;
+							   InBout <= InB_Signal;
+							   InCout <= InC_Signal;
+							   InDout <= InD_Signal;
+         when "01" =>   InAout <= InB_Signal;
+							   InBout <= InA_Signal;
+							   InCout <= InC_Signal;
+							   InDout <= InD_Signal;
+         when "10" =>   InAout <= '0';
+							   InBout <= '0';
+							   InCout <= '0';
+							   InDout <= '0';
+         when "11" =>   InAout <= '0';
+							   InBout <= '0';
+							   InCout <= '0';
+							   InDout <= '0';
+         when others => InAout <= '0';
+							   InBout <= '0';
+							   InCout <= '0';
+							   InDout <= '0';
+      end case;
+    end process;
+					 
+	----------------------------------------------------------------------------
+	-------------------------------- Wave Counter ------------------------------
+	-- Asenkron Resetli
+	-- Dalga Formları Yükselen Kenarda
+	-- Sayılarak Geribesleme Alınıyor
+	----------------------------------------------------------------------------	
+	process(InA_Signal, InB_Signal, InC_Signal, InD_Signal, Clr_1)
+	begin
+		if(clr_1='1')then
+			counter_chA <= 0;
+		elsif(InA_Signal'event and InA_Signal='1')then
+			counter_chA <= counter_chA + 1;
+		end if;
+		
+		if(clr_1='1')then
+			counter_chB <= 0;
+		elsif(InB_Signal'event and InB_Signal='1')then
+			counter_chB <= counter_chB + 1;
+		end if;
+		
+		if(clr_1='1')then
+			counter_chC <= 0;
+		elsif(InC_Signal'event and InC_Signal='1')then
+			counter_chC <= counter_chC + 1;
+		end if;
+		
+		if(clr_1='1')then
+			counter_chD <= 0;
+		elsif(InD_Signal'event and InD_Signal='1')then
+			counter_chD <= counter_chD + 1;
+		end if;
+	end process;
+	
+	------------------------------------------------------------------------------
+	--------------------------------- Comparator ---------------------------------
+	--
+	-- Counter Değerleri ilgili Değerlerle
+	-- Karşılaştırılarak Tamamlanıp 
+	-- Tamamlanmadığı Bilgisini Veriyor.
+	--
+	------------------------------------------------------------------------------
+	process(counter_chA, counter_chB, counter_chC, counter_chD, NP, WavSel)
+	begin
+		if(WavSel(0)='0' and NP=counter_chA)then
+			InA_done <= '1';
+		elsif(WavSel(0)='1' and (NP+1)=counter_chA)then
+			InA_done <= '1';
+		else
+			InA_done <= '0';
+		end if;
+		
+		if(counter_chB=NP)then
+			InB_done <= '1';
+		else
+			InB_done <= '0';
+		end if;
+		
+		if((WavSel="000" or WavSel="001") and counter_chC=1)then
+			InC_done <= '1';
+		elsif((WavSel="010" or WavSel="011") and counter_chC=0)then
+			InC_done <= '1';
+		elsif((WavSel="100" or WavSel="111") and counter_chC=(2*NP))then
+			InC_done <= '1';
+		elsif((WavSel="101") and counter_chC=(2*NP+1))then
+			InC_done <= '1';
+		elsif((WavSel="110") and counter_chC=(2*NP-1))then
+			InC_done <= '1';
+		else
+			InC_done <= '0';
+		end if;
+		
+		if((WavSel="000" or WavSel="001") and counter_chD=1)then
+			InD_done <= '1';
+		elsif((WavSel="010" or WavSel="011") and counter_chD=0)then
+			InD_done <= '1';
+		elsif((WavSel="100" or WavSel="111") and counter_chD=(2*NP))then
+			InD_done <= '1';
+		elsif((WavSel="101") and counter_chD=(2*NP+1))then
+			InD_done <= '1';
+		elsif((WavSel="110") and counter_chD=(2*NP-1))then
+			InD_done <= '1';
+		else
+			InD_done <= '0';
+		end if;
+	end process;
+end Behavioral;

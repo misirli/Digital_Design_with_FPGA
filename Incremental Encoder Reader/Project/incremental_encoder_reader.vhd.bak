@@ -1,0 +1,33 @@
+----------------------------------------------------------------------------------
+-- Company        : 
+-- Engineer       :    Mustafa MISIRLI
+-- 
+-- Create Date    :    03/03/2017 
+-- Design Name    : 
+-- Module Name    :    incremental_encoder_reader 
+-- Project Name   : 
+-- Target Devices :    Cyclone III
+-- Tool versions  : 
+-- Description    : 
+--
+-- Dependencies   : 
+--
+-- Revision       :    1.0
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity incremental_encoder_reader is
+	 
+	 
+    Port ( 
+end incremental_encoder_reader;
+
+architecture Behavioral of incremental_encoder_reader is
+	
+begin
+
+end Behavioral;

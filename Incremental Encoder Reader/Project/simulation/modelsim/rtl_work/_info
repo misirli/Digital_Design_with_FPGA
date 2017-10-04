@@ -1,0 +1,40 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\mmisirli\Desktop\Project\Digital_Design\incremental_encoder_reader\Project\simulation\modelsim
+Eincr_enc_reader
+Z1 w1488706455
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 dC:\Users\mmisirli\Desktop\Project\Digital_Design\incremental_encoder_reader\Project\simulation\modelsim
+Z5 8C:/Users/mmisirli/Desktop/Project/Digital_Design/incremental_encoder_reader/Project/incremental_encoder_reader.vhd
+Z6 FC:/Users/mmisirli/Desktop/Project/Digital_Design/incremental_encoder_reader/Project/incremental_encoder_reader.vhd
+l0
+L23
+VGm1GEZHhOc]3hi<1NYhBk2
+!s100 glAc9aIEEXnE=P0OPX6;`0
+Z7 OV;C;10.1d;51
+31
+!i10b 1
+Z8 !s108 1488717670.243000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/mmisirli/Desktop/Project/Digital_Design/incremental_encoder_reader/Project/incremental_encoder_reader.vhd|
+Z10 !s107 C:/Users/mmisirli/Desktop/Project/Digital_Design/incremental_encoder_reader/Project/incremental_encoder_reader.vhd|
+Z11 o-93 -work work -O0
+Z12 tExplicit 1
+Abehavioral
+R2
+R3
+DEx4 work 15 incr_enc_reader 0 22 Gm1GEZHhOc]3hi<1NYhBk2
+l40
+L37
+VoP<m:QobXIYnIlLJ<3_=X2
+!s100 KBRE;W][ciQ8K4j3nTOAZ0
+R7
+31
+!i10b 1
+R8
+R9
+R10
+R11
+R12

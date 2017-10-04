@@ -1,0 +1,463 @@
+# Reading C:/Altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do pulse_generator_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\Altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\Altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {C:/Users/mmisirli/Desktop/Mustafa MISIRLI/Project1/Digital_Design/ultrasonic_pulse_generator/Project/pulse_generator.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity pulse_generator
+# -- Compiling architecture Behavioral of pulse_generator
+# 
+vsim work.pulse_generator
+# vsim work.pulse_generator 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.pulse_generator(behavioral)
+add wave -position end  sim:/pulse_generator/clk
+add wave -position end  sim:/pulse_generator/prf
+add wave -position end  sim:/pulse_generator/wav
+add wave -position end  sim:/pulse_generator/phase
+add wave -position end  sim:/pulse_generator/grnd
+add wave -position end  sim:/pulse_generator/enable
+add wave -position end  sim:/pulse_generator/np
+add wave -position end  sim:/pulse_generator/reset
+add wave -position end  sim:/pulse_generator/busy
+add wave -position end  sim:/pulse_generator/InAout
+add wave -position end  sim:/pulse_generator/InBout
+add wave -position end  sim:/pulse_generator/InCout
+add wave -position end  sim:/pulse_generator/InDout
+force -freeze sim:/pulse_generator/clk 1 0, 0 {50 ps} -r 100
+force -freeze sim:/pulse_generator/prf 1 0, 0 {500 ps} -r 1000
+force -freeze sim:/pulse_generator/wav 00 0
+force -freeze sim:/pulse_generator/phase 0 0
+force -freeze sim:/pulse_generator/grnd 0 0
+force -freeze sim:/pulse_generator/enable 1 0
+force -freeze sim:/pulse_generator/np 4 0
+force -freeze sim:/pulse_generator/reset 1 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/wav 01 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/wav 10 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/wav 11 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/prf 1 0, 0 {1000 ps} -r 2000
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/prf 1 0, 0 {1000 ps} -r 2000
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/prf 1 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/prf 1 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+noforce sim:/pulse_generator/prf
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/prf 1 0, 0 {1000 ps} -r 2000
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/grnd 1 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+force -freeze sim:/pulse_generator/grnd 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
